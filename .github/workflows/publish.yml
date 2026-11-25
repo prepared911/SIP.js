@@ -1,12 +1,15 @@
 # REP-99310: build SIP.js and publish it to GitHub Packages (npm registry).
-# - push to the feature branch  -> build + pack dry-run only
-# - push of a tag v<version>    -> build + publish (version taken from the tag)
+# - pull request to develop / push to develop -> build + pack dry-run only
+# - push of a tag v<version>                  -> build + publish (version taken from the tag)
 name: Build and publish
 
 on:
+  pull_request:
+    branches:
+      - develop
   push:
     branches:
-      - "feature/REP-99310-**"
+      - develop
     tags:
       - "v*"
 
